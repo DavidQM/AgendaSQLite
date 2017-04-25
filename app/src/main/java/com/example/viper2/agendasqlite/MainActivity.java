@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
    // Button bGuardar,bModificar,bBuscar,bEliminar;
 
     String nombre,telefono,correo;
-
-    //declaraciones para la bd
+    /*
+    //declaraciones para la bd - SQLite
     ContactosSQLiteHelper contactosSQLiteHelper;
     SQLiteDatabase dbContactos;
     ContentValues dataBD;
-
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         eNombre = (EditText) findViewById(R.id.eNombre);
         eTelefono = (EditText) findViewById(R.id.eTelefono);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
-
+    /*
     contactosSQLiteHelper = new ContactosSQLiteHelper(this,"ContactosDB",null,1);
         dbContactos = contactosSQLiteHelper.getWritableDatabase();
-
+*/
     }
     public void onClick(View view) {
         int id = view.getId();
@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         telefono = eTelefono.getText().toString();
         correo = eCorreo.getText().toString();
 
+        //SQLite
+        /*
         dataBD= new ContentValues();
-
         switch (id){
+
             case R.id.bGuardar:
                 ///forma 1 -> SQLite
                 dataBD.put("nombre",nombre);
@@ -82,6 +84,28 @@ public class MainActivity extends AppCompatActivity {
                 //forma 2 -> SQL (* es todo)
                 //dbContactos.execSQL("DELETE FROM Contactos WHERE nombre='"+nombre+"'");
                 break;
+
+        }
+        */
+        switch (id){
+            case R.id.bGuardar:
+                break;
+            case R.id.bBuscar:
+                /*
+                //Cursor cursor = dbContactos.rawQuery("SELECT * FROM Contantos WHERE nombre='"+nombre+"'",null);
+
+                if(cursor.moveToFirst()){
+                    eTelefono.setText(cursor.getString(2));
+                    eCorreo.setText(cursor.getString(3));
+                }
+                */
+                break;
+            case R.id.bModificar:
+                break;
+            case R.id.bEliminar:
+
+                break;
+
         }
     }
 }
