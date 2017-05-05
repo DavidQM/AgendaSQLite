@@ -193,6 +193,7 @@ public class MainDActivity extends AppCompatActivity
 
             @Override
             protected String doInBackground(Void... v){
+                //es recomendable no tener acceso a los widget en Background
                 HashMap<String, String> params = new HashMap<>();
                 /*
                 params.put("nombre",nombre);
@@ -200,7 +201,7 @@ public class MainDActivity extends AppCompatActivity
                 params.put("correo",correo);
                 */
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_GET_CONTACT, params);
+                String res = rh.sendGetRequestParam(Config.URL_GET_CONTACT, nombre);
                 return res;
             }
 
@@ -252,7 +253,7 @@ public class MainDActivity extends AppCompatActivity
                 params.put("correo",correo);
                 */
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_DELETE, nombre);
+                String res = rh.sendGetRequestParam(Config.URL_DELETE, nombre);
                 return res;
             }
 
